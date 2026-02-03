@@ -52,7 +52,7 @@ class Index
             'totalRecords' => $fileCount,
             'currentPage' => $currentPage,
             'articles' => $articles,
-            'meta_title' => sprintf('Expensinator Blog - Page: %s', $currentPage),
+            'meta_title' => sprintf('Blog - Page: %s', $currentPage),
             'meta_description' => $articles[0]['excerpt'] ?? 'Read the latest articles on expense tracking, budgeting, and personal finance management with Expensinator.',
         ];
     }
