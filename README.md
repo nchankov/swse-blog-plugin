@@ -16,7 +16,7 @@ Functionalities provided:
 3. sitemap.xml generator which would construct sitemap of the blog
 
 
-## URL Rewrites
+### URL Rewrites
 
 The url structure is:
 
