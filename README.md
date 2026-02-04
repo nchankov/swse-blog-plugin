@@ -22,12 +22,12 @@ The url structure is:
 
 https://server.com/{plugin}  
 https://server.com/{plugin}/{article_filename}.html  
-https://server.com/sitemap.xml  
-
-e.g
-https://server.com/blog
-https://server.com/blog/your-first-post.html
 https://server.com/sitemap.xml
+
+e.g:  
+https://server.com/blog  
+https://server.com/blog/your-first-post.html  
+https://server.com/sitemap.xml  
 
 To make the url rewrites use the following rows in the .htaccess
 
