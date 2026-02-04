@@ -20,6 +20,7 @@ Functionalities provided:
 
 The url structure is:
 https://server.com/{plugin}
+
 https://server.com/{plugin}/{article_filename}.html
 https://server.com/sitemap.xml
 
