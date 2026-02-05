@@ -15,6 +15,12 @@ Functionalities provided:
 2. access to the article details with ability to go back to the list link
 3. sitemap.xml generator which would construct sitemap of the blog
 
+## Installation
+
+1. Clone the repository into the project root folder (rename it as blog or articles if required)
+2. Run the composer require commands above
+3. add .env file in the plugin directory (copy the .env.example) and set the required variables
+4. add the url rewrites in the .htaccess file in the project root folder (see Url Rewrites section below)
 
 ### URL Rewrites
 
@@ -28,8 +34,6 @@ e.g:
 https://server.com/blog  
 https://server.com/blog/your-first-post.html  
 https://server.com/sitemap.xml  
-
-To make the url rewrites use the following rows in the .htaccess
 
 ```
 # Blog sitemap
