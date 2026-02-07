@@ -40,8 +40,13 @@ class Index
             ), 0, 400);
             $description = substr($description, 0, strrpos($description, ' ')) . '...';
 
+            if (isset($_ENV['BLOG_URL_STRUCTURE']) && $_ENV['BLOG_URL_STRUCTURE']) {
+                $url = sprintf($_ENV['BLOG_URL_STRUCTURE'], $_ENV['PLUGIN'], pathinfo($article, PATHINFO_FILENAME));
+            } else {
+                $url = '/' . $_ENV['PLUGIN'] . '/article?url=' . pathinfo($article, PATHINFO_FILENAME);
+            }
             $articles[$key] = [
-                'url' => sprintf($_ENV['BLOG_URL_STRUCTURE'], $_ENV['PLUGIN'], pathinfo($article, PATHINFO_FILENAME)),
+                'url' => $url,
                 'title' => $this->replacePlaceholders($object->title),
                 'image' => $object->image,
                 'excerpt' => $this->replacePlaceholders($object->excerpt),
