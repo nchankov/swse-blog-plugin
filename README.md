@@ -31,20 +31,26 @@ of the box without modification.
 ### Add url rewrites (optional)
 
 Use the following url rewrites for nice article urls.
+
 ```
-# Blog sitemap - allow nice sitemap url which would be used by search engines to index the articles.
-# Add https://server.com/blog/sitemap.xml to the Google Search conole or reference it from the robots.txt file to make 
-# sure that search engines can find it.
+# Blog sitemap
 RewriteRule ^blog/sitemap.xml$ index.php?__route=blog/sitemap [QSA,L]
 
-# Redirect /{plugin}/article?url={article_filename} to /{plugin}/{article_filename}.html
-# This is done for comliancy with the old urls and to make sure that the old urls are not indexed by search engines. 
-# If you don't have old urls or you don't care about them, you can skip adding this rule.
+# Rule 1
 RewriteCond %{THE_REQUEST} blog/article?url=([^&\ ]+)
 RewriteRule ^ /blog/%1\.html? [L,R=301]
 
-# Rewrite /{plugin}/{article_filename} to index.php?__route={plugin}/article?url={article_filename}
-# This is the main rewrite rule which would allow using the nice urls for the articles. 
-# It should be added after the redirect rule above to avoid infinite redirects.
+# Rule 2
 RewriteRule ^blog/([^/]+)/?\.html$ index.php?__route=blog/article&url=$1 [QSA,L]
 ```
+
+### Explanation on the rules:
+
+1. Blog sitemap make the sitemap available at /blog/sitemap.xml   
+2. Rule 1 is for redirecting old urls to the new ones. Use it in case there are already articles created and indexed 
+   with the old url structure. It will redirect urls like /blog/article?url=article-slug to /blog/article-slug.html   
+3. Rule 2 is for making the new urls work. It will rewrite urls like /blog/article-slug.html to the system understandable
+   format /blog/article?url=article-slug internally so the plugin can handle it.
+
+Change blog in the rules to match the category of the plugin incase the category is renamed with different name .e.g. 
+news.
